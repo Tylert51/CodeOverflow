@@ -71,7 +71,7 @@ public class BinSort {
         Item plasticBottle = new Item("plastic bottle", blue);
         Item jar = new Item("jar", blue);
         Item can = new Item("can", blue);
-        Item plasticCarton = new Item("plastic carton", blue);
+        Item carton = new Item("carton", blue);
         Item cerealBox = new Item("cereal box", blue);
         Item wrappingPaper = new Item("wrapping paper", blue);
         Item paperBag = new Item("paper bag", blue);
@@ -82,29 +82,29 @@ public class BinSort {
         blueBin.add(plasticBottle);
         blueBin.add(jar);
         blueBin.add(can);
-        blueBin.add(plasticCarton);
+        blueBin.add(carton);
         blueBin.add(cerealBox);
         blueBin.add(wrappingPaper);
         blueBin.add(paperBag);
 
         //items for redBin
         Item cleaningProduct = new Item("cleaning product", red);
-        Item battery = new Item("lead-acid battery", red);
+        Item medicine = new Item("medicine", red);
         Item paint = new Item("paint", red);
         Item makeup = new Item("makeup", red);
         Item lightBulb = new Item("compact fluorescent light bulb", red);
-        Item thermostat = new Item("thermostat", red);
+        Item thermometer = new Item("thermometer", red);
         Item pesticide = new Item("pesticide", red);
         Item gasoline = new Item("gasoline", red);
         Item rechargeableBattery = new Item("rechargeable battery", red);
         Item nailPolish = new Item("nail polish", red);
 
         redBin.add(cleaningProduct);
-        redBin.add(battery);
+        redBin.add(medicine);
         redBin.add(paint);
         redBin.add(makeup);
         redBin.add(lightBulb);
-        redBin.add(thermostat);
+        redBin.add(thermometer);
         redBin.add(pesticide);
         redBin.add(gasoline);
         redBin.add(rechargeableBattery);

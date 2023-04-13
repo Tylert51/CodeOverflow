@@ -21,6 +21,8 @@ public class GUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
 
+        welcomeTextArea.setEditable(false);
+
         instructionsButton.addActionListener(this);
         startGameButton.addActionListener(this);
 
@@ -51,10 +53,13 @@ public class GUI extends JFrame implements ActionListener {
 
         } else if (text.equals("Start Game")) {
 
-            GameWindow gw = new GameWindow();
+            GameWindow gw = new GameWindow(this);
 
         }
+    }
 
-
+    public void changeWindowText(String str, Font font) {
+        welcomeTextArea.setFont(font);
+        welcomeTextArea.setText(str);
     }
 }

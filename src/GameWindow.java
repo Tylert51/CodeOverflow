@@ -1,7 +1,9 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+
 
 public class GameWindow extends JFrame implements ActionListener {
     private JPanel mainPanel;
@@ -11,12 +13,17 @@ public class GameWindow extends JFrame implements ActionListener {
     private JButton greyButton;
     private JLabel trashItem;
     private JLabel score;
+    private JButton exitButton;
     private BinSort binSort;
     private int itemsCycled;
     private ArrayList<Item> randItems;
+    private int userScore;
 
-    public GameWindow() {
+    GUI gui;
+
+    public GameWindow(GUI g) {
         binSort = new BinSort();
+        gui = g;
 
         setContentPane(mainPanel);
         setTitle("GameWin");
@@ -29,6 +36,7 @@ public class GameWindow extends JFrame implements ActionListener {
         blueButton.addActionListener(this);
         redButton.addActionListener(this);
         greyButton.addActionListener(this);
+        exitButton.addActionListener(this);
 
         randItems = binSort.getListOfRandItems();
         itemsCycled = 0;
@@ -42,29 +50,50 @@ public class GameWindow extends JFrame implements ActionListener {
 
         Object source = e.getSource();
         JButton b = (JButton) source;
-        String selectedColor = b.getText().toLowerCase();
+        String colors = "green---blue---red---grey";
+        String text = b.getText();
 
-        if (itemsCycled == 9) {
+        if(colors.contains(text.toLowerCase())) {
 
-            binSort.checkInput(randItems.get(itemsCycled), selectedColor);
-            score.setText("Score: " + binSort.getScore());
-            itemsCycled++;
+            String selectedColor = b.getText().toLowerCase();
 
-            trashItem.setText("done");
-        } else if (itemsCycled < 9) {
 
-            binSort.checkInput(randItems.get(itemsCycled), selectedColor);
-            score.setText("Score: " + binSort.getScore());
+            if (itemsCycled == 9) {
 
-            itemsCycled++;
+                binSort.checkInput(randItems.get(itemsCycled), selectedColor);
+                score.setText("Score: " + binSort.getScore() + "  ");
+                itemsCycled++;
 
-            Item trash = randItems.get(itemsCycled);
+                userScore = binSort.getScore();
 
-            trashItem.setText((itemsCycled + 1) + ". " + trash.toString() + "    " + trash.getBinColor());
-        } else {
+                trashItem.setFont(new Font("Consolas", Font.BOLD, 25));
 
+                trashItem.setText("Done! Press exit to see your final score");
+                gui.changeWindowText("Nice! You got " + userScore + " right and " + (10 - userScore) + " wrong", new Font("Consolas", Font.PLAIN, 36));
+
+            } else if (itemsCycled < 9) {
+
+                binSort.checkInput(randItems.get(itemsCycled), selectedColor);
+                score.setText("Score: " + binSort.getScore() + "  ");
+
+                itemsCycled++;
+
+                Item trash = randItems.get(itemsCycled);
+
+                trashItem.setText((itemsCycled + 1) + ". " + trash.toString());
+
+            } else {
+
+            }
+
+        } else if (text.equals("Exit")) {
+            setVisible(false);
         }
 
 
+    }
+
+    public int getUserScore() {
+        return userScore;
     }
 }
