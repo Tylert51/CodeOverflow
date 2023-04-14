@@ -18,7 +18,7 @@ public class GUI extends JFrame implements ActionListener {
 
         setContentPane(mainPanel);
         setTitle("Main Menu");
-        setSize(1160, 700);
+        setSize(1260, 750);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setVisible(true);
@@ -44,7 +44,7 @@ public class GUI extends JFrame implements ActionListener {
 
         if (text.equals("Instructions")) {
 
-                welcomeTextArea.setFont(new Font("Consolas", Font.PLAIN, 17));
+                welcomeTextArea.setFont(new Font("Consolas", Font.PLAIN, 20));
                 welcomeTextArea.setText(binSort.getInstructions());
                 button.setText("Back to Welcome Screen");
 
