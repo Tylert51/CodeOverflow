@@ -118,7 +118,7 @@ public class GameWindow extends JFrame implements ActionListener {
 
                 Item trash = randItems.get(itemsCycled);
 
-                trashItem.setText((itemsCycled + 1) + ". " + trash.toString() + "    "  + trash.getBinColor());
+                trashItem.setText((itemsCycled + 1) + ". " + trash.toString());
                 imageLabel.setIcon(new ImageIcon(randItems.get(itemsCycled).getImg()));
 
             }
