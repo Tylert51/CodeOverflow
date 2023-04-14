@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class BinSort {
@@ -42,16 +43,16 @@ public class BinSort {
 
     public void addItems() {
         //items for greenBin (Compost)
-        Item appleCore = new Item("apple core", green);
-        Item eggShell = new Item("egg shell", green);
-        Item bananaPeel = new Item("banana peel", green);
-        Item coffeeGrounds = new Item("coffee grounds", green);
-        Item staleBread = new Item("stale bread", green);
-        Item teaBag = new Item("tea bag", green);
-        Item nutshells = new Item("nutshells", green);
-        Item napkin = new Item("napkin", green);
-        Item soiledNewspaper = new Item("soiled newspaper", green);
-        Item cornCob = new Item("corn cob", green);
+        Item appleCore = new Item("apple core", green, new ImageIcon(getClass().getResource("appleCore.png")).getImage());
+        Item eggShell = new Item("egg shell", green, new ImageIcon(getClass().getResource("eggShell.png")).getImage());
+        Item bananaPeel = new Item("banana peel", green, new ImageIcon(getClass().getResource("bananaPeel.png")).getImage());
+        Item coffeeGrounds = new Item("coffee grounds", green, new ImageIcon(getClass().getResource("coffeeGrounds.png")).getImage());
+        Item staleBread = new Item("stale bread", green, new ImageIcon(getClass().getResource("staleBread.png")).getImage());
+        Item teaBag = new Item("tea bag", green, new ImageIcon(getClass().getResource("teaBag.png")).getImage());
+        Item nutshells = new Item("nutshells", green, new ImageIcon(getClass().getResource("nutShells.png")).getImage());
+        Item napkin = new Item("napkin", green, new ImageIcon(getClass().getResource("napkins.png")).getImage());
+        Item soiledNewspaper = new Item("soiled newspaper", green, new ImageIcon(getClass().getResource("soiledNewspaper.png")).getImage());
+        Item cornCob = new Item("corn cob", green, new ImageIcon(getClass().getResource("cornCob.png")).getImage());
 
         greenBin.add(appleCore);
         greenBin.add(eggShell);
@@ -65,16 +66,16 @@ public class BinSort {
         greenBin.add(cornCob);
 
         //items for blueBin
-        Item cardboard = new Item("cardboard", blue);
-        Item magazine = new Item("magazine", blue);
-        Item glassBottle = new Item("glass bottle", blue);
-        Item plasticBottle = new Item("plastic bottle", blue);
-        Item jar = new Item("jar", blue);
-        Item can = new Item("can", blue);
-        Item carton = new Item("carton", blue);
-        Item cerealBox = new Item("cereal box", blue);
-        Item wrappingPaper = new Item("wrapping paper", blue);
-        Item paperBag = new Item("paper bag", blue);
+        Item cardboard = new Item("cardboard", blue, new ImageIcon(getClass().getResource("cardboard.png")).getImage());
+        Item magazine = new Item("magazine", blue, new ImageIcon(getClass().getResource("magazine.png")).getImage());
+        Item glassBottle = new Item("glass bottle", blue, new ImageIcon(getClass().getResource("glassBottle.png")).getImage());
+        Item plasticBottle = new Item("plastic bottle", blue, new ImageIcon(getClass().getResource("plasticBottle.png")).getImage());
+        Item jar = new Item("jar", blue, new ImageIcon(getClass().getResource("jar.png")).getImage());
+        Item can = new Item("can", blue, new ImageIcon(getClass().getResource("can.png")).getImage());
+        Item carton = new Item("carton", blue, new ImageIcon(getClass().getResource("carton.png")).getImage());
+        Item cerealBox = new Item("cereal box", blue, new ImageIcon(getClass().getResource("cerealBox.png")).getImage());
+        Item wrappingPaper = new Item("wrapping paper", blue, new ImageIcon(getClass().getResource("wrappingPaper.png")).getImage());
+        Item paperBag = new Item("paper bag", blue, new ImageIcon(getClass().getResource("paperBag.png")).getImage());
 
         blueBin.add(cardboard);
         blueBin.add(magazine);
@@ -88,16 +89,16 @@ public class BinSort {
         blueBin.add(paperBag);
 
         //items for redBin
-        Item cleaningProduct = new Item("cleaning product", red);
-        Item medicine = new Item("medicine", red);
-        Item paint = new Item("paint", red);
-        Item makeup = new Item("makeup", red);
-        Item lightBulb = new Item("compact fluorescent light bulb", red);
-        Item thermometer = new Item("thermometer", red);
-        Item pesticide = new Item("pesticide", red);
-        Item gasoline = new Item("gasoline", red);
-        Item rechargeableBattery = new Item("rechargeable battery", red);
-        Item nailPolish = new Item("nail polish", red);
+        Item cleaningProduct = new Item("cleaning product", red, new ImageIcon(getClass().getResource("cleaningProduct.png")).getImage());
+        Item medicine = new Item("medicine", red, new ImageIcon(getClass().getResource("medicine.png")).getImage());
+        Item paint = new Item("paint", red, new ImageIcon(getClass().getResource("paint.png")).getImage());
+        Item makeup = new Item("makeup", red, new ImageIcon(getClass().getResource("makeup.png")).getImage());
+        Item lightBulb = new Item("compact fluorescent light bulb", red, new ImageIcon(getClass().getResource("lightBulb.png")).getImage());
+        Item thermometer = new Item("thermometer", red, new ImageIcon(getClass().getResource("thermometer.png")).getImage());
+        Item pesticide = new Item("pesticide", red, new ImageIcon(getClass().getResource("pesticide.png")).getImage());
+        Item gasoline = new Item("gasoline", red, new ImageIcon(getClass().getResource("gasoline.png")).getImage());
+        Item rechargeableBattery = new Item("rechargeable battery", red, new ImageIcon(getClass().getResource("rechargeableBattery.png")).getImage());
+        Item nailPolish = new Item("nail polish", red, new ImageIcon(getClass().getResource("nailPolish.png")).getImage());
 
         redBin.add(cleaningProduct);
         redBin.add(medicine);
@@ -111,16 +112,16 @@ public class BinSort {
         redBin.add(nailPolish);
 
         //items for greyBin
-        Item soiledDiaper = new Item("soiled diaper", grey);
-        Item styrofoam = new Item("styrofoam", grey);
-        Item ceramicPlate = new Item("ceramic plate", grey);
-        Item paperPlate = new Item("soiled paper plate", grey);
-        Item faceMask = new Item("face mask", grey);
-        Item usedGloves = new Item("used gloves", grey);
-        Item catLitter = new Item("cat litter", grey);
-        Item chipBag = new Item("chip bag", grey);
-        Item filter = new Item("filter", grey);
-        Item bone = new Item("bone", grey);
+        Item soiledDiaper = new Item("soiled diaper", grey, new ImageIcon(getClass().getResource("diaper.png")).getImage());
+        Item styrofoam = new Item("styrofoam", grey, new ImageIcon(getClass().getResource("styrofoam.png")).getImage());
+        Item ceramicPlate = new Item("ceramic plate", grey, new ImageIcon(getClass().getResource("ceramicPlate.png")).getImage());
+        Item paperPlate = new Item("soiled paper plate", grey, new ImageIcon(getClass().getResource("paperPlate.png")).getImage());
+        Item faceMask = new Item("face mask", grey, new ImageIcon(getClass().getResource("faceMask.png")).getImage());
+        Item usedGloves = new Item("used gloves", grey, new ImageIcon(getClass().getResource("usedGloves.png")).getImage());
+        Item catLitter = new Item("cat litter", grey, new ImageIcon(getClass().getResource("catLitter.png")).getImage());
+        Item chipBag = new Item("chip bag", grey, new ImageIcon(getClass().getResource("chipBag.png")).getImage());
+        Item filter = new Item("filter", grey, new ImageIcon(getClass().getResource("filter.png")).getImage());
+        Item bone = new Item("bone", grey, new ImageIcon(getClass().getResource("bone.png")).getImage());
 
         greyBin.add(soiledDiaper);
         greyBin.add(styrofoam);
@@ -187,5 +188,11 @@ public class BinSort {
     public String getInstructions() {
         return instructions;
     }
+
+    public void resetScore() {
+        score = 0;
+    }
+
+
 
 }

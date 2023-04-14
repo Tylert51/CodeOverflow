@@ -9,13 +9,15 @@ public class GUI extends JFrame implements ActionListener {
     private JTextArea welcomeTextArea;
     private JButton startGameButton;
     private BinSort binSort;
+    private int highScore;
+    private double lowestTime;
 
     public GUI() {
 
         binSort = new BinSort();
 
         setContentPane(mainPanel);
-        setTitle("Test");
+        setTitle("Main Menu");
         setSize(1160, 700);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -26,6 +28,7 @@ public class GUI extends JFrame implements ActionListener {
         instructionsButton.addActionListener(this);
         startGameButton.addActionListener(this);
 
+        highScore = -1;
     }
 
     @Override
@@ -53,7 +56,7 @@ public class GUI extends JFrame implements ActionListener {
 
         } else if (text.equals("Start Game")) {
 
-            GameWindow gw = new GameWindow(this);
+            GameWindow gw = new GameWindow(this, binSort);
 
         }
     }
@@ -62,4 +65,26 @@ public class GUI extends JFrame implements ActionListener {
         welcomeTextArea.setFont(font);
         welcomeTextArea.setText(str);
     }
+
+    public void addWindowText(String str) {
+        welcomeTextArea.append(str);
+    }
+
+    public int getHighScore() {
+        return highScore;
+    }
+
+    public double getLowestTime() {
+        return lowestTime;
+    }
+
+    public void updateHighScore(int val) {
+        highScore = val;
+    }
+
+    public void updateLowestTime(double val) {
+        lowestTime = val;
+    }
+
+
 }

@@ -54,6 +54,7 @@
           <font name="Consolas" size="36" style="0"/>
           <foreground color="-16777216"/>
           <text value="Welcome!!!!!!!"/>
+          <wrapStyleWord value="false"/>
         </properties>
       </component>
     </children>

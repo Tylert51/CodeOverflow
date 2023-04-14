@@ -2,7 +2,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.Duration;
 import java.util.ArrayList;
+import java.time.Instant;
 
 
 public class GameWindow extends JFrame implements ActionListener {
@@ -14,15 +16,22 @@ public class GameWindow extends JFrame implements ActionListener {
     private JLabel trashItem;
     private JLabel score;
     private JButton exitButton;
+    private JLabel imageLabel;
     private BinSort binSort;
     private int itemsCycled;
     private ArrayList<Item> randItems;
     private int userScore;
+    private Instant start;
+    private Instant end;
+    private long timeElapsed;
+    private double secElapsed;
+    private int currHighScore;
+    private double currLowestTime;
 
     GUI gui;
 
-    public GameWindow(GUI g) {
-        binSort = new BinSort();
+    public GameWindow(GUI g, BinSort bs) {
+        binSort = bs;
         gui = g;
 
         setContentPane(mainPanel);
@@ -41,8 +50,12 @@ public class GameWindow extends JFrame implements ActionListener {
         randItems = binSort.getListOfRandItems();
         itemsCycled = 0;
 
-        trashItem.setText((itemsCycled + 1) + ". " + randItems.get(itemsCycled).toString());
+        start = Instant.now();
 
+        trashItem.setText((itemsCycled + 1) + ". " + randItems.get(itemsCycled).toString());
+        imageLabel.setIcon(new ImageIcon(randItems.get(itemsCycled).getImg()));
+
+        currHighScore = gui.getHighScore();
     }
 
     @Override
@@ -64,12 +77,32 @@ public class GameWindow extends JFrame implements ActionListener {
                 score.setText("Score: " + binSort.getScore() + "  ");
                 itemsCycled++;
 
+                end = Instant.now();
                 userScore = binSort.getScore();
+
+                timeElapsed = Duration.between(start, end).toMillis();
+
+                secElapsed = timeElapsed / 1000.0;
+
+
+                if(userScore > currHighScore) {
+                    gui.updateHighScore(userScore);
+                    gui.updateLowestTime(secElapsed);
+
+                } else if (userScore == currHighScore && (secElapsed < gui.getLowestTime())) {
+                    gui.updateLowestTime(secElapsed);
+                }
+
+
 
                 trashItem.setFont(new Font("Consolas", Font.BOLD, 25));
 
-                trashItem.setText("Done! Press exit to see your final score");
-                gui.changeWindowText("Nice! You got " + userScore + " right and " + (10 - userScore) + " wrong", new Font("Consolas", Font.PLAIN, 36));
+                trashItem.setText("Nice! You got " + userScore + " right and " + (10 - userScore) + " wrong");
+                gui.changeWindowText("Score: " + userScore + "\nThat took you " + secElapsed + " seconds", new Font("Consolas", Font.PLAIN, 36));
+
+
+                gui.addWindowText("\nThe current high score is " + gui.getHighScore() + " right in " + gui.getLowestTime() + " seconds");
+                binSort.resetScore();
 
             } else if (itemsCycled < 9) {
 
@@ -80,7 +113,8 @@ public class GameWindow extends JFrame implements ActionListener {
 
                 Item trash = randItems.get(itemsCycled);
 
-                trashItem.setText((itemsCycled + 1) + ". " + trash.toString());
+                trashItem.setText((itemsCycled + 1) + ". " + trash.toString() + "    "  + trash.getBinColor());
+                imageLabel.setIcon(new ImageIcon(randItems.get(itemsCycled).getImg()));
 
             } else {
 
@@ -90,10 +124,8 @@ public class GameWindow extends JFrame implements ActionListener {
             setVisible(false);
         }
 
-
     }
 
-    public int getUserScore() {
-        return userScore;
-    }
+
+
 }
