@@ -28,14 +28,14 @@ public class GameWindow extends JFrame implements ActionListener {
     private int currHighScore;
     private Image thumbsUp;
 
-    GUI gui;
+    private GUI gui;
 
     public GameWindow(GUI g, BinSort bs) {
         binSort = bs;
         gui = g;
 
         setContentPane(mainPanel);
-        setTitle("GameWin");
+        setTitle("Game Window");
         setSize(1300, 1440);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

@@ -165,7 +165,6 @@ public class BinSort {
             randList.add(allItems.get(rand));
         }
 
-
         return randList;
     }
 
